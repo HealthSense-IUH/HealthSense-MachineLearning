@@ -41,8 +41,10 @@
 
 ### Tài liệu tham khảo
 - [1] Task Force of ESC/NASPE, "Heart rate variability: Standards of measurement, physiological interpretation and clinical use," *European Heart Journal*, vol. 17, pp. 354-381, 1996.
-- [2] Malik et al., "Heart rate variability in relation to prognosis after myocardial infarction," *European Heart Journal*, 1989.
-- [3] Shaffer, F. & Ginsberg, J.P., "An Overview of Heart Rate Variability Metrics and Norms," *Frontiers in Public Health*, vol. 5, 2017.
+- [2] Schäfer, A. & Vagedes, J., "How accurate is pulse rate variability as an estimate of heart rate variability? A review on studies comparing photoplethysmographic technology with an electrocardiogram," *International Journal of Cardiology*, 2013.
+- [3] Perez, M.V. et al., "Large-Scale Assessment of a Smartwatch to Identify Atrial Fibrillation (Apple Heart Study)," *New England Journal of Medicine*, 2019.
+- [4] Peralta, E. et al., "Assessing the Quality of Heart Rate Variability Estimated from Wrist and Finger PPG," *Sensors*, 2019.
+- Xem danh sách đầy đủ (19 bài báo) tại file `REFERENCES.md`.
 
 ---
 
@@ -54,7 +56,7 @@
 - Collects and stores raw PPG data from the MAX30102 sensor via ESP32.
 - Signal preprocessing: removes Motion Artifacts and Baseline Wander.
 - Extracts 16 HRV (Heart Rate Variability) features following the Task Force 1996 standard.
-- Trains a health status classification model using Random Forest.
+- Trains an Atrial Fibrillation (AFib) and health status classification model using Random Forest.
 
 ### Tech Stack
 - **Language:** Python 3.12+
@@ -87,5 +89,7 @@
 
 ### References
 - [1] Task Force of ESC/NASPE, "Heart rate variability: Standards of measurement, physiological interpretation and clinical use," *European Heart Journal*, vol. 17, pp. 354-381, 1996.
-- [2] Malik et al., "Heart rate variability in relation to prognosis after myocardial infarction," *European Heart Journal*, 1989.
-- [3] Shaffer, F. & Ginsberg, J.P., "An Overview of Heart Rate Variability Metrics and Norms," *Frontiers in Public Health*, vol. 5, 2017.
+- [2] Schäfer, A. & Vagedes, J., "How accurate is pulse rate variability as an estimate of heart rate variability? A review on studies comparing photoplethysmographic technology with an electrocardiogram," *International Journal of Cardiology*, 2013.
+- [3] Perez, M.V. et al., "Large-Scale Assessment of a Smartwatch to Identify Atrial Fibrillation (Apple Heart Study)," *New England Journal of Medicine*, 2019.
+- [4] Peralta, E. et al., "Assessing the Quality of Heart Rate Variability Estimated from Wrist and Finger PPG," *Sensors*, 2019.
+- See the full list (19 papers) in the `REFERENCES.md` file.
