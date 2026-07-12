@@ -31,6 +31,22 @@
 | Đi bộ nhẹ | ICC ~0.85, sai lệch 5-10% | [5][6] |
 | Vận động mạnh | ICC giảm, sai lệch 15-20% | [6] |
 
+### So sánh vị trí đo PPG (cổ tay vs ngón tay) và ECG
+
+| # | Tác giả | Tiêu đề | Tạp chí | Năm | DOI / Link | Kết luận chính |
+|---|---------|---------|---------|-----|------------|----------------|
+| 7b | Peralta, E. et al. | Assessing the Quality of Heart Rate Variability Estimated from Wrist and Finger PPG: A Novel Approach Based on Cross-Mapping Method | *Sensors*, 19(16), 3552 | 2019 | https://doi.org/10.3390/s19163552 | PPG ngón tay **gần HRV (ECG) hơn** PPG cổ tay |
+| 7c | Fine, J. et al. | Sources of Inaccuracy in Photoplethysmography for Continuous Cardiovascular Monitoring | *Biosensors*, 11(4), 126 | 2021 | https://doi.org/10.3390/bios11040126 | Pulse Transit Time gây dịch pha nhưng **không ảnh hưởng RR intervals** |
+
+| | ECG | PPG ngón tay | PPG cổ tay (HealthSense) |
+|---|---|---|---|
+| **RR interval** | Gold standard | Sai lệch < 3% | Sai lệch < 5% |
+| **Chất lượng tín hiệu** | Cao nhất | Cao | Trung bình |
+| **Nhiễu chuyển động** | Ít | Ít | Nhiều nhất |
+| **Tiện dùng 24/7** | Không | Không | **Có** |
+
+> **Vai trò:** Chứng minh PPG cổ tay (MAX30102) tuy kém ngón tay nhưng RR intervals vẫn chính xác đủ cho AFib detection, đồng thời tiện đeo liên tục.
+
 ---
 
 ## 3. Phát hiện rung tâm nhĩ (AFib) bằng PPG / Wearable
