@@ -1,0 +1,57 @@
+name: MLOps Release Pipeline
+
+on:
+  push:
+    tags:
+      - 'v*' # Chỉ chạy khi có tag bắt đầu bằng chữ 'v' (VD: v1.0.0, v2.1-final)
+
+jobs:
+  train-and-release:
+    runs-on: ubuntu-latest
+    
+    # Cấp quyền GITHUB_TOKEN để được phép tạo Release trên repo
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip' # Tăng tốc độ cài đặt thư viện cho các lần sau
+
+      - name: Cài đặt thư viện (Dependencies)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install nbconvert ipykernel
+
+      - name: Tự động Huấn luyện Mô hình (MLOps Training)
+        run: |
+          echo "Bắt đầu chạy file Notebook để huấn luyện AI..."
+          jupyter nbconvert --to notebook --execute notebooks/MIT_BIH_AF/02_model_training.ipynb
+
+      - name: Đóng gói Mô hình (Zip Models)
+        run: |
+          echo "Nén các file .pkl thành file ZIP để phát hành..."
+          zip -r rf_afib_models.zip models/
+
+      - name: Tạo Github Release & Đính kèm Mô hình
+        uses: softprops/action-gh-release@v2
+        with:
+          files: rf_afib_models.zip
+          name: Release ${{ github.ref_name }}
+          body: |
+            🎉 **Mô hình Random Forest phát hiện Rung tâm nhĩ (AFib)**
+            
+            Bản phát hành này được tự động tạo ra bởi hệ thống MLOps Github Action.
+            - **Đầu vào:** Tập dữ liệu MIT-BIH (`data/features/mitbih_af_features.csv`)
+            - **Thuật toán:** Random Forest (Cân bằng nhãn)
+            - **Thành phẩm:** Bao gồm `random_forest_afib.pkl` và `scaler.pkl` (Bên trong file zip tải về).
+            
+            *Hãy tải file `rf_afib_models.zip` bên dưới để lấy mô hình thả vào Backend FastAPI.*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
