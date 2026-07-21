@@ -5,9 +5,8 @@ data/*
 !data/.gitkeep
 
 # Models & Checkpoints
-models/
+# (Đã mở khóa hoàn toàn thư mục models)
 *.pkl
-*.pt
 *.pth
 *.h5
 *.keras
