@@ -47,11 +47,11 @@ jobs:
           body: |
             🎉 **Mô hình Random Forest phát hiện Rung tâm nhĩ (AFib)**
             
-            Bản phát hành này được tự động tạo ra bởi hệ thống MLOps Github Action.
-            - **Đầu vào:** Tập dữ liệu MIT-BIH (`data/features/mitbih_af_features.csv`)
+            Bản phát hành này được tự động tạo ra bởi hệ thống MLOps Github Action thông qua script `train_model.py`.
+            - **Đầu vào:** Tập dữ liệu đặc trưng (`data/features/train_features.csv`)
             - **Thuật toán:** Random Forest (Cân bằng nhãn)
-            - **Thành phẩm:** Bao gồm `random_forest_afib.pkl` và `scaler.pkl` (Bên trong file zip tải về).
+            - **Thành phẩm:** Bao gồm mô hình dự đoán `afib_rf_model.pkl` (Bên trong file zip tải về).
             
-            *Hãy tải file `rf_afib_models.zip` bên dưới để lấy mô hình thả vào Backend FastAPI.*
+            *Hãy tải và giải nén file `rf_afib_models.zip` bên dưới để lấy file mô hình tích hợp thẳng vào Backend FastAPI (`HealthSense-AI-Service`).*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
