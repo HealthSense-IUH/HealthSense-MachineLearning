@@ -1,6 +1,7 @@
 # Data
 data/
 !data/sample/
+!data/features/
 !data/.gitkeep
 
 # Models & Checkpoints
