@@ -31,8 +31,8 @@ jobs:
 
       - name: Tự động Huấn luyện Mô hình (MLOps Training)
         run: |
-          echo "Bắt đầu chạy file Notebook để huấn luyện AI..."
-          jupyter nbconvert --to notebook --execute notebooks/MIT_BIH_AF/02_model_training.ipynb
+          echo "Bắt đầu chạy file script để huấn luyện AI..."
+          python src/models/train_model.py
 
       - name: Đóng gói Mô hình (Zip Models)
         run: |
