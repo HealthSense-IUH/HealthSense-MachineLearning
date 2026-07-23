@@ -26,13 +26,13 @@ jobs:
       - name: Cài đặt thư viện (Dependencies)
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install nbconvert ipykernel
+          pip install pandas numpy scikit-learn matplotlib seaborn scipy joblib
+          pip install nbconvert ipykernel jupyter
 
       - name: Tự động Huấn luyện Mô hình (MLOps Training)
         run: |
-          echo "Bắt đầu chạy file script để huấn luyện AI..."
-          python src/models/train_model.py
+          echo "Bắt đầu chạy Jupyter Notebook để huấn luyện AI..."
+          jupyter nbconvert --to notebook --execute notebooks/MIMIC_Training/02_mimic_model_training.ipynb
 
       - name: Đóng gói Mô hình (Zip Models)
         run: |
@@ -47,10 +47,10 @@ jobs:
           body: |
             🎉 **Mô hình Random Forest phát hiện Rung tâm nhĩ (AFib)**
             
-            Bản phát hành này được tự động tạo ra bởi hệ thống MLOps Github Action thông qua script `train_model.py`.
-            - **Đầu vào:** Tập dữ liệu đặc trưng (`data/features/train_features.csv`)
-            - **Thuật toán:** Random Forest (Cân bằng nhãn)
-            - **Thành phẩm:** Bao gồm mô hình dự đoán `afib_rf_model.pkl` (Bên trong file zip tải về).
+            Bản phát hành này được tự động tạo ra bởi hệ thống MLOps Github Action thông qua file Notebook.
+            - **Đầu vào:** Tập dữ liệu đặc trưng (`data/features/mimic_train_features.csv`)
+            - **Thuật toán:** Random Forest Pipeline (Gộp sẵn StandardScaler)
+            - **Thành phẩm:** Bao gồm mô hình dự đoán `mimic_afib_pipeline.pkl` (Bên trong file zip tải về).
             
             *Hãy tải và giải nén file `rf_afib_models.zip` bên dưới để lấy file mô hình tích hợp thẳng vào Backend FastAPI (`HealthSense-AI-Service`).*
         env:
